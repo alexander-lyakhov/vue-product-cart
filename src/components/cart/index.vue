@@ -20,8 +20,8 @@
       <span>{{totalPrice}} $</span>
     </div>
 
-    <div class="reset-wrapper">
-      <button class="reset" @click.stop="reset">Reset</button>
+    <div class="reset-wrapper" :class="{isActive: isResetActive}">
+      <button class="reset" @click.stop="reset" :disabled="!isResetActive">Reset</button>
     </div>
   </div>
 </template>
@@ -37,7 +37,7 @@ export default {
   components: {
     counter
   },
-  
+
   props: {
     cart: {
       type: Object,
@@ -56,7 +56,11 @@ export default {
 
     totalPrice() {
       return this.cart.price * this.amount;
-    }      
+    },
+
+    isResetActive() {
+      return this.amount > 0;
+    }
   },
 
   methods: {
@@ -85,7 +89,7 @@ export default {
       this.decreaseAmount({amount: this.amount, price: this.cart.price})
       this.amount = 0;
     }
-  }  
+  }
 }
 </script>
 
@@ -101,7 +105,7 @@ export default {
 
   .title {
     font-family: georgia;
-    font-size: 1.25rem;    
+    font-size: 1.25rem;
     color: #000;
     background: #f0f0f0;
     letter-spacing: 1px;
@@ -122,7 +126,7 @@ export default {
       width: 100%;
       height: 240px;
       object-fit: scale-down;
-    }  
+    }
 
     .img-cover {
       position: absolute;
@@ -132,7 +136,7 @@ export default {
       height: 100%;
     }
   }
-  
+
   .price {
     font-size: 1.25rem;
     color: #fff;
@@ -140,7 +144,7 @@ export default {
     text-align: center;
     padding: 0.5rem 0;
   }
-  
+
   .price-total {
     font-size: 1rem;
     color: #404040;
@@ -153,24 +157,41 @@ export default {
     margin: .5rem 0;
     padding: .5rem .5rem;
   }
-    
+
+  $reset-bg--default: #e0e0e0;
+  $reset-bg--active: #FFCDD2;
+
   .reset-wrapper {
-    background: #FFCDD2;
+    background: $reset-bg--default;
     padding: 0.5rem;
     text-align: center;
-    .reset {
-      font-size: 1rem;
-      color: #fff;
-      background: #E53935;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-      border: none;
-      border-radius: 8px;
-      outline: none;
-      height: 32px;
-      line-height: 32px;
-      padding: 0 1.5rem;
-      cursor: pointer
+
+    &.isActive {
+      background: $reset-bg--active;
     }
+
+    button {
+      &.reset {
+        font-size: 1rem;
+        color: #fff;
+        background: #E53935;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        border: none;
+        border-radius: 8px;
+        outline: none;
+        height: 32px;
+        line-height: 32px;
+        padding: 0 1.5rem;
+        cursor: pointer
+      }
+
+      &[disabled] {
+        color: #f0f0f0;
+        background: #808080;
+        cursor: default;
+      }
+    }
+
   }
 }
 </style>
