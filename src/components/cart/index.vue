@@ -158,16 +158,13 @@ export default {
     padding: .5rem .5rem;
   }
 
-  $reset-bg--default: #e0e0e0;
-  $reset-bg--active: #FFCDD2;
-
   .reset-wrapper {
-    background: $reset-bg--default;
+    background: #e0e0e0;
     padding: 0.5rem;
     text-align: center;
 
     &.isActive {
-      background: $reset-bg--active;
+      background: #FFCDD2;
     }
 
     button {
@@ -186,7 +183,7 @@ export default {
       }
 
       &[disabled] {
-        color: #f0f0f0;
+        color: #e0e0e0;
         background: #808080;
         cursor: default;
       }

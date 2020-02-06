@@ -9,12 +9,9 @@
   import layout from '@/components/layout.vue'
 
   export default {
-    name: 'app',
+    name: 'App',
     components: {
       layout
     }
   }
 </script>
-
-<style lang="scss">
-</style>
