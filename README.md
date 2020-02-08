@@ -1,6 +1,6 @@
 # vue-product-cart
 
-### [Live Demo](http://alexander-lyakhov.github.io/vue-product-cart)
+### [Live Demo](http://alexander-lyakhov.github.io/vue-product-cart/index.html)
 
 ## Пример реализации тестового задания  (Vue.js)
 ### Постановка задачи:
