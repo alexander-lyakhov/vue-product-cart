@@ -8,6 +8,7 @@
       Total price:
       <span class="value">{{totalPrice}} $</span>
     </div>
+    <div v-if="!totalProducts" class="stat cart-empty">Cart is empty</div>
   </header>
 </template>
 
@@ -28,6 +29,7 @@ export default {
 <style lang="scss" scoped>
 
 header {
+  font-size: 1rem;
   background: #404040;
   box-shadow: 0 3px 8px rgba(0,0,0,0.25);
   width: 100%;
@@ -40,8 +42,7 @@ header {
   z-index: 1;
 
   .stat {
-    font-size: 1rem;
-    margin: 0 20px;
+    margin: 0 0 0 20px;
     color: #ccc;
 
     .value {
@@ -53,6 +54,10 @@ header {
       display: inline-block;
       margin: 0 8px;
       padding: 4px 6px;
+    }
+
+    &.cart-empty {
+      color: #f99;
     }
   }
 }
