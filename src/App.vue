@@ -1,17 +1,22 @@
 <template>
-  <layout />
+  <div>
+    <v-header></v-header>
+    <grid></grid>
+  </div>
 </template>
 
 <script>
   import '@/styles/reset.css'
   import '@/styles/index.scss'
 
-  import layout from '@/components/layout.vue'
+  import header from '@/components/header';
+  import grid from '@/components/grid';
 
   export default {
     name: 'App',
     components: {
-      layout
-    }
+      'v-header': header,
+      grid
+    },
   }
 </script>
