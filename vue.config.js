@@ -1,5 +1,4 @@
 module.exports = {
-	baseUrl: process.env.NODE_ENV === 'production'
-		? '/product-cart/'
-		: '/'
+  productionSourceMap: false,
+  publicPath: process.env.NODE_ENV === 'production' ? '/vue-contacts/' : '/',
 }
