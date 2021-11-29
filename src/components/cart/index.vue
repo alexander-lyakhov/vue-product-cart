@@ -1,7 +1,7 @@
 ﻿<template>
   <div class="cart">
     <div class="title">
-      {{cart.title}}
+      {{ cart.title }}
     </div>
 
     <div class="image">
@@ -10,14 +10,14 @@
     </div>
 
     <div class="price">
-      Price: {{cart.price}}$
+      Price: {{ cart.price }}$
     </div>
 
     <counter :value="amount" :max="cart.limit" @decrease="decrease" @increase="increase" />
 
     <div class="price-total">
       <span>Total:</span>
-      <span>{{totalPrice}} $</span>
+      <span>{{ totalPrice }} $</span>
     </div>
 
     <div class="reset-wrapper" :class="{isActive: isResetActive}">
@@ -30,6 +30,19 @@
 
 import {mapState, mapGetters, mapMutations} from 'vuex'
 import counter from './counter'
+
+const mapStore = {
+  state: {
+    ...mapState(['products'])
+  },
+  mutations: {
+    ...mapMutations([
+      'decreaseTotal',
+      'increaseTotal',
+      'decreaseAmount'
+    ]),
+  }
+};
 
 export default {
   name: 'cart',
@@ -52,7 +65,8 @@ export default {
   },
 
   computed: {
-    ...mapState(['products']),
+    //...mapState(['products']),
+    ...mapStore.state,
 
     totalPrice() {
       return this.cart.price * this.amount;
@@ -64,7 +78,8 @@ export default {
   },
 
   methods: {
-    ...mapMutations(['decreaseTotal', 'increaseTotal', 'decreaseAmount']),
+    //...mapMutations(['decreaseTotal', 'increaseTotal', 'decreaseAmount']),
+    ...mapStore.mutations,
 
     setAmoun(amount) {
 
